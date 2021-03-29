@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ScanQR_HTSLL</string>
+    <string name="title_activity">Scan CODE</string>
+    <string name="lbl_duration">DURATION</string>
+    <string name="lbl_genre">GENRE</string>
+    <string name="lbl_rating">RATING</string>
+    <string name="lbl_price">PRICE</string>
+    <string name="btn_confirm">Xác Nhận</string>
+    <string name="msg_no_students_found">Không Tìm Thấy Thông Tin Học Sinh</string>
+</resources>
