@@ -1,60 +1,53 @@
 package com.example.scanqr_htsll;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.SparseArray;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-import com.google.android.gms.vision.barcode.Barcode;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
-import java.util.List;
 
-import info.androidhive.barcode.BarcodeReader;
-
-public class ScanActivity extends AppCompatActivity  implements BarcodeReader.BarcodeReaderListener {
-    BarcodeReader barcodeReader;
+public class ScanActivity extends AppCompatActivity  {
+    private TextView textView;
+    private TextView maHocSinh;
+    private Button confirmScan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
-
-        // get the barcode reader instance
-        barcodeReader = (BarcodeReader) getSupportFragmentManager().findFragmentById(R.id.barcode_scanner);
+        textView = findViewById(R.id.lblStatusScan);
+        maHocSinh = findViewById(R.id.lblMaHocSinh2);
+        confirmScan = findViewById(R.id.btnConfirmScan);
+        confirmScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmScan.setEnabled(false);
+            }
+        });
+    }
+    public void ScanQR(View view){
+        IntentIntegrator intentIntegrator = new IntentIntegrator(this);
+        intentIntegrator.initiateScan();
     }
     @Override
-    public void onScanned(Barcode barcode) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (intentResult != null){
+            if (intentResult.getContents() == null){
+                textView.setText("Đã Hủy");
 
-        // playing barcode reader beep sound
-        barcodeReader.playBeep();
-
-        // ticket details activity by passing barcode
-        Intent intent = new Intent(ScanActivity.this, ResultActivity.class);
-        intent.putExtra("code", barcode.displayValue);
-        startActivity(intent);
-    }
-    @Override
-    public void onScannedMultiple(List<Barcode> list) {
-
-    }
-
-    @Override
-    public void onBitmapScanned(SparseArray<Barcode> sparseArray) {
-
-    }
-
-    @Override
-    public void onScanError(String s) {
-        Toast.makeText(getApplicationContext(), "Error occurred while scanning " + s, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
+            }else {
+                textView.setText("Đã Quét");
+                confirmScan.setEnabled(true);
+                maHocSinh.setText(intentResult.getContents());
+            }
         }
-        return super.onOptionsItemSelected(item);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

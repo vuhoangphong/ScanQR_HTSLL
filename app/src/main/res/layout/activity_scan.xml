@@ -5,22 +5,136 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/barcode_scanner"
-        android:name="info.androidhive.barcode.BarcodeReader"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:auto_focus="true"
-        app:use_flash="false" />
 
-    <info.androidhive.barcode.ScannerOverlay
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#44000000"
-        app:line_color="#7323DC"
-        app:line_speed="6"
-        app:line_width="4"
-        app:square_height="200"
-        app:square_width="200" />
+    <TextView
+        android:id="@+id/lblStatusScan"
+        android:layout_width="327dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="346dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="20dp" />
 
+    <TextView
+        android:id="@+id/lblTenHocSinh"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="237dp"
+        android:layout_marginBottom="488dp"
+        android:text="Tên Học Sinh"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/lblMaHocSinh"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="238dp"
+        android:layout_marginBottom="534dp"
+        android:text="Mã Học Sinh"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/lblMaHocSinh2"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="534dp"
+        android:text="Chưa Có"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/lblTenHocSinh2"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="488dp"
+        android:text="Chưa Có"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/lblLop"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="237dp"
+        android:layout_marginBottom="437dp"
+        android:text="Lớp"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/lblLop2"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="437dp"
+        android:text="Chưa Có"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/lblScanQR"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="651dp"
+        android:text="Điểm Danh Học Sinh Với Mã QR"
+        android:textAlignment="center"
+        android:textSize="26dp" />
+
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="497dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="186dp"
+        android:onClick="ScanQR"
+        android:text="Scan QR" />
+
+    <Button
+        android:id="@+id/btnConfirmScan"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="437dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="246dp"
+        android:enabled="false"
+        android:text="Xác Nhận Điểm Danh" />
 </RelativeLayout>

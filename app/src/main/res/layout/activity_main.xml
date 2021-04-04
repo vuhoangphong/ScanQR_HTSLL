@@ -50,6 +50,7 @@
         android:foreground="?attr/selectableItemBackground"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
+        android:onClick="ShowActivityScan"
         android:fontFamily="sans-serif-medium"
         android:text="Bắt Đầu Điểm Danh ->"
         android:textColor="@android:color/white"
