@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
     }
+
     public void ShowActivityScan(View view){
         Intent intent = new Intent (this, ScanActivity.class);
         startActivity(intent);

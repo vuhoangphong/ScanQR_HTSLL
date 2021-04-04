@@ -1,13 +1,18 @@
 package com.example.scanqr_htsll;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -38,7 +43,21 @@ public class ScanActivity extends AppCompatActivity  {
     private TextView Lop;
     private TextView NgaySinh;
     private TextView GioiTinh;
-    private int iDHS;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.confirm_time:
+                Toast.makeText(this,"Item 1",Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +76,13 @@ public class ScanActivity extends AppCompatActivity  {
             }
         });
     }
+
+
+
     public void ScanQR(View view){
         IntentIntegrator intentIntegrator = new IntentIntegrator(this);
+        intentIntegrator.setOrientationLocked(false);
+        intentIntegrator.setPrompt("Đưa Camera Vào QR Code Của Học Sinh");
         intentIntegrator.initiateScan();
     }
     public void GetTT(int maHS){
